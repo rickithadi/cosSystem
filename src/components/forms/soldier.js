@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // IMPORT PROJECT REFERENCES
-
+import {Form, Input} from 'formsy-react-components';
 //import {LoadingIndicator} from '../shared/LoadingIndicator/LoadingIndicator';
 //import {Error} from '../shared/Error/Error';
 
@@ -11,9 +11,10 @@ class SoldierForm extends Component {
     super(props);
   }
   state = {
-    data:{email: '',
+    email: '',
     password: '',
-    confirmPassword: ''}
+    confirmPassword: '',
+    loading: false,
   };
 
   onChange = e => {
@@ -22,15 +23,14 @@ class SoldierForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log('wtf',this.state)
-    const errors = this.validate(this.state.data);
+    console.log('wtf', this.state);
+    const errors = this.validate(this.state);
     this.setState({errors});
     if (Object.keys(errors).length === 0) {
       this.setState({loading: true});
-      console.log(this.state.data);
-     //this.props.history.push('/demo');
+      console.log(this.state);
+      //this.props.history.push('/demo');
     }
-
   };
   validate = data => {
     const errors = {};
@@ -41,64 +41,50 @@ class SoldierForm extends Component {
     return errors;
   };
 
-
   componentDidMount() {
     //this.props.fetchZipCodes();
   }
 
   render() {
-    const {data  } = this.state;
+    const {email, password} = this.state;
     return (
       <div className="container">
-        <form className="form-signin" onSubmit={this.onSubmit} noValidate>
-          <h2 className="form-signin-heading">Create Account</h2>
+        <Form className="form-signin" onSubmit={this.onSubmit}>
+          <h2 className="form-signin-heading">Soldier </h2>
 
           <div className="form-group">
-            <input
+            <Input
               type="text"
               name="email"
               className="form-control"
               placeholder="Email address"
-              //required
-              value={data.email}
+              required
+              value={email}
               onChange={this.onChange}
               //autoFocus
             />
             <span className="help-block"></span>
           </div>
 
-           <div className="form-row">
-         <div className="form-group">
-            <input
-              type="password"
-              name="password"
-              className="form-control"
-              placeholder="Password"
-              required
-              value={data.password}
-              onChange={this.onChange}
-            />
-            <span className="help-block"></span>
-          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <Input
+                type="password"
+                name="password"
+                className="form-control"
+                placeholder="Password"
+                required
+                value={password}
+                onChange={this.onChange}
+              />
+              <span className="help-block"></span>
+            </div>
 
-          <div className="form-group">
-            <input
-              type="password"
-              name="confirmPassword"
-              className="form-control"
-              placeholder="Confirm Password"
-              required
-              value={data.confirmPassword}
-              onChange={this.onChange}
-            />
-            <span className="help-block"></span>
+            <button className="btn btn-lg btn-primary btn-block" type="submit">
+              Create Account
+            </button>
           </div>
-
-          <button className="btn btn-lg btn-primary btn-block" type="submit">
-            Create Account
-          </button>
-      </div>
-        </form>
+        </Form>
       </div>
     );
   }
