@@ -18,14 +18,5 @@
         "react"
     ],
     "rules": {
-        "no-console": "off",        
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
-    }
-}
+            'no-console': 'off',
+}}
