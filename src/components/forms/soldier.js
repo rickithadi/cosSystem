@@ -34,9 +34,8 @@ class SoldierForm extends Component {
     console.log(this.state, e);
   };
 
-  handleChange = selectedOption => {
-    this.setState({selectedOption});
-    console.log(`Option selected:`, selectedOption);
+  handleChange = achievement => {
+    this.setState({achievement});
   };
   componentDidMount() {
     //this.props.fetchZipCodes();
@@ -273,15 +272,7 @@ class SoldierForm extends Component {
             Create Account
           </button>
         </Form>
-  <Select
-                placeholder="achievements"
-                closeMenuOnSelect={false}
-                components={animatedComponents}
-                isMulti
-                //onChange={this.onChange}
-                options={achievements}
-                onChange={this.handleChange}></Select>
-            
+           
       </div>
     );
   }
