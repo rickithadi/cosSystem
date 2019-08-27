@@ -34,9 +34,13 @@ class SoldierForm extends Component {
     console.log(this.state, e);
   };
 
-  handleChange = achievement => {
+  handleChangeA = achievement => {
     this.setState({achievement});
   };
+  handleChangeM = milestone => {
+    this.setState({milestone});
+  };
+
   componentDidMount() {
     //this.props.fetchZipCodes();
   }
@@ -231,32 +235,24 @@ class SoldierForm extends Component {
                 isMulti
                 //onChange={this.onChange}
                 options={achievements}
-                onChange={this.handleChange}></Select>
+                onChange={this.handleChangeA}></Select>
             </div>{' '}
             <div className="col-md-6 mb-3">
-              <select
+              <Select
                 name="milestones"
-                multiple
+                isMulti
+                closeMenuOnSelect={false}
                 className="form-control"
                 placeholder="milestones"
                 value={milestone}
-                onChange={this.handleChange}>
-                <option disabled hidden value="">
-                  Milestones
-                </option>
-                {milestones.map(app => {
-                  return (
-                    <option key={app.value} value={app.label}>
-                      {app.label}
-                    </option>
-                  );
-                })}{' '}
-              </select>
+                options={milestones}
+                components={animatedComponents}
+                onChange={this.handleChangeM}></Select>
             </div>{' '}
           </div>
 
           <div className="form-row">
-            <div className="col-md-10 mb-3  centered ">
+            <div className="col-md-12 mb-3  ">
               <textarea
                 className="form-control"
                 rows="3"
@@ -272,7 +268,6 @@ class SoldierForm extends Component {
             Create Account
           </button>
         </Form>
-           
       </div>
     );
   }
