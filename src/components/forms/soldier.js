@@ -265,7 +265,7 @@ class SoldierForm extends Component {
           </div>
 
           <button className="btn btn-lg btn-primary btn-block" type="submit">
-            Create Account
+            Submit
           </button>
         </Form>
       </div>
