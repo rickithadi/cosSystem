@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // IMPORT PROJECT REFERENCES
-import {Form, Input} from 'formsy-react-components';
+import {Form} from 'formsy-react-components';
 //import {LoadingIndicator} from '../shared/LoadingIndicator/LoadingIndicator';
 //import {Error} from '../shared/Error/Error';
 
@@ -11,9 +11,15 @@ class SoldierForm extends Component {
     super(props);
   }
   state = {
-    email: '',
-    password: '',
-    confirmPassword: '',
+    appointment: '',
+    Aappointment: '',
+    milestone: '',
+    achievement: '',
+    company: '',
+    rank: '',
+    comd: false,
+    surname: '',
+    name: '',
     loading: false,
   };
 
@@ -22,64 +28,86 @@ class SoldierForm extends Component {
   };
 
   onSubmit = e => {
-    e.preventDefault();
-    console.log('wtf', this.state);
-    const errors = this.validate(this.state);
-    this.setState({errors});
-    if (Object.keys(errors).length === 0) {
-      this.setState({loading: true});
-      console.log(this.state);
-      //this.props.history.push('/demo');
-    }
-  };
-  validate = data => {
-    const errors = {};
-
-    //if (!isEmail(data.email)) errors.email = 'Invalid email';
-    if (!data.query) errors.query = "Can't be blank";
-
-    return errors;
+    console.log(this.state, e);
   };
 
   componentDidMount() {
     //this.props.fetchZipCodes();
   }
 
+  /*eslint no-unused-vars: ["error", { "args": "all" }]*/
   render() {
-    const {email, password} = this.state;
+    const {
+      rank,
+      name,
+      surname,
+      /*      appointment,*/
+      //Aappointment,
+      //milestone,
+      //achievement,
+      //company,
+      /*comd,*/
+    } = this.state;
+    const ranks = [
+      {value: '00', label: 'Private'},
+      {value: '01', label: 'Lance Corporal '},
+      {value: '02', label: 'Corporal '},
+      {value: '03', label: 'Corporal First Class'},
+      {value: '04', label: 'Option E-1'},
+      {value: '05', label: 'Option E-2'},
+    ];
+
     return (
       <div className="container">
-        <Form className="form-signin" onSubmit={this.onSubmit}>
+        <Form className="form-signin" onValidSubmit={this.onSubmit}>
           <h2 className="form-signin-heading">Soldier </h2>
 
-          <div className="form-group">
-            <Input
-              type="text"
-              name="email"
-              className="form-control"
-              placeholder="Email address"
-              required
-              value={email}
-              onChange={this.onChange}
-              //autoFocus
-            />
-            <span className="help-block"></span>
+          <div className="form-row">
+            <div className="col-md-2 mb-3">
+              <select
+                name="rank"
+                className="form-control"
+                placeholder="rank"
+                value={rank.value}
+                onChange={this.onChange}
+                required>
+                {ranks.map((rank) => {
+                  return (
+                    <option key={rank.value} value={rank.label}>
+                      {rank.label}
+                    </option>
+                  );
+                })}{' '}
+              </select>
+            </div>
+            <div className="col-md-10 mb-3  ">
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">First and last name</span>
+                </div>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="first"
+                  name="name"
+                  required
+                  value={name}
+                  onChange={this.onChange}
+                />
+                <input
+                  type="text"
+                  name="surname"
+                  className="form-control"
+                  placeholder="last"
+                  required
+                  value={surname}
+                  onChange={this.onChange}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="form-row">
-            <div className="form-group">
-              <Input
-                type="password"
-                name="password"
-                className="form-control"
-                placeholder="Password"
-                required
-                value={password}
-                onChange={this.onChange}
-              />
-              <span className="help-block"></span>
-            </div>
-
             <button className="btn btn-lg btn-primary btn-block" type="submit">
               Create Account
             </button>
