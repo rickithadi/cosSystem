@@ -1,10 +1,17 @@
 import {USER_SUBMITTED, USER_CREATED, USER_UPDATED} from '../reducers/user.js';
 
 const initialState = {
-  user: [],
-  fetching: false,
-  fetched: false,
-  failed: false,
+    appointment: '',
+    Aappointment: '',
+    milestone: [],
+    achievement: [],
+    offences: '',
+    company: '',
+    rank: '',
+    comd: false,
+    surname: '',
+    name: '',
+ 
 };
 
 export const userCreated = user => ({
