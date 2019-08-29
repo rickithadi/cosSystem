@@ -4,9 +4,9 @@ export const USER_SUBMITTED = 'USER_SUBMITTED';
 export const USER_CREATED = 'USER_CREATED';
 export const USER_UPDATED = 'USER_UPDATED';
 
-export const create = user => dispatch => dispatch(userLoggedIn(user));
-
-export const update = user => dispatch => dispatch(userUpdated(user));
+export const createAction = user => dispatch => dispatch(userLoggedIn(user));
+export const updateAction = user => dispatch => dispatch(userUpdated(user));
+export const submitAction = user => dispatch => dispatch(userSubmitted(user));
 
 //TODO add this shit
 /*export const submit = user => dispatch =>*/
@@ -15,4 +15,3 @@ export const update = user => dispatch => dispatch(userUpdated(user));
 //dispatch(userSubmitted(user));
 //});
 
-export const submit = user => dispatch => dispatch(userSubmitted(user));
