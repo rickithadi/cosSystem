@@ -8,7 +8,8 @@ import Select from 'react-select';
 //import {Error} from '../shared/Error/Error';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {CreateUser} from '../state/actions/user.js'
+import {createAction} from '../state/actions/user'
+
 
 
 // COMPONENT
@@ -36,8 +37,9 @@ class SoldierForm extends Component {
   };
 
   onSubmit = e => {
-    console.log(this.state, e);
-    CreateUser(this.state)
+    console.log('recerived',this.state, e);
+    console.log('propsllllllhhhhhhhh',this.props);
+    this.props.createAction(this.state)
   };
 
   handleChangeA = achievement => {
@@ -49,6 +51,7 @@ class SoldierForm extends Component {
 
   componentDidMount() {
     //this.props.fetchZipCodes();
+    this.props.createAction(this.state)
   }
 
   /*eslint no-unused-vars: ["error", { "args": "all" }]*/
@@ -280,9 +283,9 @@ class SoldierForm extends Component {
 }
 //export default SoldierForm;
 SoldierForm.propTypes = {
- submit : PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
-  // exerciseList:PropTypes.array.isRequired
+ //submit : PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  createAction:PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -293,6 +296,6 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {
-  CreateUser 
+    createAction
   },
 )(SoldierForm);

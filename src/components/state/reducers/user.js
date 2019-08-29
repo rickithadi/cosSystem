@@ -1,4 +1,4 @@
-import {USER_SUBMITTED, USER_CREATED, USER_UPDATED} from '../reducers/user.js';
+import {USER_SUBMITTED, USER_CREATED, USER_UPDATED} from '../actions/user';
 
 const initialState = {
     appointment: '',
@@ -41,11 +41,11 @@ export const userSubmitted = user => ({
 export const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case USER_CREATED:
-      return {...state, ...action.data.entities.user};
+      return {...state };
     case USER_SUBMITTED:
-      return {...state, ...action.data.entities.user};
+      return {...state };
     case USER_UPDATED:
-      return {...state, ...action.data.entities.user};
+      return {...state };
     default:
       return state;
   }

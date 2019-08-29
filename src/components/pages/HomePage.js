@@ -1,7 +1,7 @@
 // IMPORT PACKAGE REFERENCES
 //import PropTypes from 'prop-types';
 //import {connect} from 'react-redux';
-//import {CreateUser} from '../state/actions/user.js';
+import {createAction} from '../state/actions/user.js';
 
 import React from 'react';
 import SoldierForm from '../forms/soldier.js';
@@ -12,7 +12,7 @@ import SoldierForm from '../forms/soldier.js';
 
 function createUser(user) {
   console.log('recerived',user)
-  this.props.CreateUser(user);
+  createAction(user);
 }
 const HomePage = () => (
   <main>
