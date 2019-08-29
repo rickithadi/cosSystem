@@ -41,11 +41,11 @@ export const userSubmitted = user => ({
 export const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case USER_CREATED:
-      return {...state };
+      return {...state, ...action.user};
     case USER_SUBMITTED:
-      return {...state };
+      return {...state, ...action.user};
     case USER_UPDATED:
-      return {...state };
+      return {...state, ...action.user};
     default:
       return state;
   }

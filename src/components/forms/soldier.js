@@ -51,7 +51,7 @@ class SoldierForm extends Component {
 
   componentDidMount() {
     //this.props.fetchZipCodes();
-    this.props.createAction(this.state)
+    //this.props.createAction(this.state)
   }
 
   /*eslint no-unused-vars: ["error", { "args": "all" }]*/
