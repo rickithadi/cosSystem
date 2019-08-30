@@ -6,6 +6,7 @@ const config = {
         contentBase: commonPaths.outputPath,
         compress: true,
         historyApiFallback: true,
+          disableHostCheck: true,   // That solved it
         hot: false,
         port: 9000
     }
